@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Mirror — AI Fashion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,480;0,9..144,560;1,9..144,420&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="stage">
+  <div class="app" id="app">
+    <div class="grain"></div>
+    <div class="screens" id="screens">
+
+      <!-- ============ HOME ============ -->
+      <section class="screen active" id="screen-home">
+        <div class="statusbar-space"></div>
+        <header class="home-header">
+          <div>
+            <div class="greet-sub">Good morning</div>
+            <div class="logo-word">Mirror</div>
+          </div>
+          <button class="avatar" id="btn-profile-avatar">J</button>
+        </header>
+
+        <div class="search-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="text" placeholder="Search a brand, style or color" readonly />
+          <button class="icon-btn" id="btn-open-camera-search" aria-label="Search by photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 8a2 2 0 0 1 2-2h1.2a1 1 0 0 0 .83-.45l.94-1.4A1 1 0 0 1 9.8 3.5h4.4a1 1 0 0 1 .83.45l.94 1.4a1 1 0 0 0 .83.45H18a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.3"/></svg>
+          </button>
+        </div>
+
+        <div class="ai-banner" id="btn-ai-banner">
+          <span class="sparkle-tag">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="11" height="11"><path d="M12 2l1.6 5.5L19 9l-5.4 1.5L12 16l-1.6-5.5L5 9l5.4-1.5z"/></svg>
+            AI Search
+          </span>
+          <h2>Snap any look.<br/>Find it instantly.</h2>
+          <button class="ai-banner-cta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M12 4v16M4 12h16"/></svg>
+            Upload a photo
+          </button>
+        </div>
+
+        <div class="chip-row" id="chip-row"></div>
+
+        <div class="section-head">
+          <h3>Trending now</h3>
+          <button class="see-all" id="btn-trend-seeall">See all</button>
+        </div>
+        <div class="trend-scroll" id="trend-scroll"></div>
+
+        <div class="section-head">
+          <h3>Curated for you</h3>
+        </div>
+        <div class="grid-2" id="curated-grid"></div>
+
+        <p class="footer-note">Curated with an eye trained on your saves, wishlist and past try-ons.</p>
+      </section>
+
+      <!-- ============ SCAN ============ -->
+      <section class="screen" id="screen-scan">
+        <div class="statusbar-space"></div>
+        <div class="sub-header">
+          <button class="back-btn" data-back="screen-home">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <h2>AI Search</h2>
+        </div>
+        <div class="scan-wrap">
+          <div class="scan-frame" id="scan-frame">
+            <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 8a2 2 0 0 1 2-2h1.2a1 1 0 0 0 .83-.45l.94-1.4A1 1 0 0 1 9.8 3.5h4.4a1 1 0 0 1 .83.45l.94 1.4a1 1 0 0 0 .83.45H18a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.3"/></svg>
+            <img id="scan-img" class="hidden" alt="Uploaded photo"/>
+            <div class="scan-line"></div>
+          </div>
+          <div class="scan-status">
+            <div class="title" id="scan-title">Upload a photo to begin</div>
+            <div class="sub" id="scan-sub">Full-length shots against a plain background work best.</div>
+            <div class="progress-track hidden" id="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+          </div>
+          <div class="upload-choices" id="upload-choices">
+            <button class="choice-btn" id="btn-take-photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8a2 2 0 0 1 2-2h1.2a1 1 0 0 0 .83-.45l.94-1.4A1 1 0 0 1 9.8 3.5h4.4a1 1 0 0 1 .83.45l.94 1.4a1 1 0 0 0 .83.45H18a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.3"/></svg>
+              Take a photo
+            </button>
+            <button class="choice-btn" id="btn-choose-photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 16l5-5 4 4 4-4 5 5"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>
+              Choose from library
+            </button>
+          </div>
+          <input type="file" accept="image/*" id="file-input" class="hidden" />
+        </div>
+      </section>
+
+      <!-- ============ SEARCH RESULTS ============ -->
+      <section class="screen" id="screen-results">
+        <div class="statusbar-space"></div>
+        <div class="sub-header">
+          <button class="back-btn" data-back="screen-home">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <h2>Matches for you</h2>
+        </div>
+        <p class="section-pad" style="font-size:var(--text-xs);color:var(--ink-soft);margin-bottom:.9rem;">We found pieces that echo the shape, texture and tone of your photo.</p>
+        <div class="grid-2" id="results-grid"></div>
+      </section>
+
+      <!-- ============ PRODUCT DETAIL ============ -->
+      <section class="screen" id="screen-product">
+        <div class="statusbar-space"></div>
+        <div class="sub-header">
+          <button class="back-btn" id="btn-product-back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <div style="flex:1"></div>
+          <button class="icon-btn ghost" id="btn-product-heart" aria-label="Save">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 21s-7-4.35-9.5-8.8C.5 8.5 2.3 5 6 5c2 0 3.5 1.2 4 2.4C10.5 6.2 12 5 14 5c3.7 0 5.5 3.5 3.5 7.2C19 16.65 12 21 12 21z"/></svg>
+          </button>
+        </div>
+        <div class="pd-media" id="pd-media"></div>
+        <div class="pd-body">
+          <div class="pd-top">
+            <div>
+              <div class="pd-name" id="pd-name">—</div>
+              <div class="pd-cat" id="pd-cat">—</div>
+            </div>
+            <div class="pd-price" id="pd-price">$0</div>
+          </div>
+          <p class="pd-desc" id="pd-desc"></p>
+          <div class="pd-label">Color</div>
+          <div class="swatch-row" id="pd-swatches"></div>
+          <div class="pd-label">Size</div>
+          <div class="size-row" id="pd-sizes"></div>
+        </div>
+        <div class="pd-actions">
+          <button class="btn btn-outline btn-block" id="btn-add-bag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+            Add to Bag
+          </button>
+          <button class="btn btn-camel btn-block" id="btn-try-on">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 8a2 2 0 0 1 2-2h1.2a1 1 0 0 0 .83-.45l.94-1.4A1 1 0 0 1 9.8 3.5h4.4a1 1 0 0 1 .83.45l.94 1.4a1 1 0 0 0 .83.45H18a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3"/></svg>
+            Try It On
+          </button>
+        </div>
+      </section>
+
+      <!-- ============ TRY ON ============ -->
+      <section class="screen" id="screen-tryon">
+        <div class="statusbar-space"></div>
+        <div class="sub-header">
+          <button class="back-btn" id="btn-tryon-back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <h2>Virtual Try-On</h2>
+        </div>
+
+        <div class="tryon-stage" id="tryon-stage">
+          <span class="tryon-chip" id="tryon-chip-label">Preview</span>
+          <svg class="tryon-silhouette" id="tryon-silhouette" viewBox="0 0 100 220" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="50" cy="26" r="15"/>
+            <path d="M50 41 L50 120"/>
+            <path d="M50 55 C30 58 22 75 24 108"/>
+            <path d="M50 55 C70 58 78 75 76 108"/>
+            <path d="M32 108 C30 140 30 165 34 195"/>
+            <path d="M68 108 C70 140 70 165 66 195"/>
+            <path d="M30 120 C42 128 58 128 70 120"/>
+          </svg>
+          <div class="tryon-garment-overlay" id="tryon-overlay"></div>
+          <button class="tryon-upload-btn" id="btn-tryon-upload">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M4 8a2 2 0 0 1 2-2h1.2a1 1 0 0 0 .83-.45l.94-1.4A1 1 0 0 1 9.8 3.5h4.4a1 1 0 0 1 .83.45l.94 1.4a1 1 0 0 0 .83.45H18a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3"/></svg>
+            Your photo
+          </button>
+        </div>
+
+        <div class="fit-card">
+          <div class="gauge-wrap">
+            <svg width="64" height="64" viewBox="0 0 64 64">
+              <circle class="gauge-track" cx="32" cy="32" r="26"/>
+              <circle class="gauge-fill" id="gauge-fill" cx="32" cy="32" r="26" stroke-dasharray="163" stroke-dashoffset="163"/>
+            </svg>
+            <div class="gauge-label" id="gauge-label">0</div>
+          </div>
+          <div class="fit-copy">
+            <div class="title">Fit Score</div>
+            <div class="sub" id="fit-size-copy">Recommended size —</div>
+            <span class="tag" id="fit-tag">Great match</span>
+          </div>
+        </div>
+
+        <div class="tryon-actions">
+          <button class="btn btn-outline btn-block" id="btn-try-another">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M4.5 15a8 8 0 0 0 14.9 2M19.5 9a8 8 0 0 0-14.9-2"/></svg>
+            Try Another
+          </button>
+          <button class="btn btn-primary btn-block" id="btn-tryon-addbag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+            Add to Bag
+          </button>
+        </div>
+      </section>
+
+      <!-- ============ SAVED ============ -->
+      <section class="screen" id="screen-saved">
+        <div class="statusbar-space"></div>
+        <div class="sub-header"><h2>Saved</h2></div>
+        <div class="grid-2" id="saved-grid"></div>
+        <div class="empty-state hidden" id="saved-empty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.35-9.5-8.8C.5 8.5 2.3 5 6 5c2 0 3.5 1.2 4 2.4C10.5 6.2 12 5 14 5c3.7 0 5.5 3.5 3.5 7.2C19 16.65 12 21 12 21z"/></svg>
+          <div class="t">Nothing saved yet</div>
+          <div>Tap the heart on any piece to keep it here.</div>
+        </div>
+      </section>
+
+      <!-- ============ BAG ============ -->
+      <section class="screen" id="screen-bag">
+        <div class="statusbar-space"></div>
+        <div class="sub-header"><h2>Your Bag</h2></div>
+        <div id="bag-list"></div>
+        <div class="empty-state hidden" id="bag-empty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          <div class="t">Your bag is empty</div>
+          <div>Pieces you add will show up here.</div>
+        </div>
+        <div class="bag-summary hidden" id="bag-summary">
+          <div class="sum-row"><span>Subtotal</span><span id="bag-subtotal">$0</span></div>
+          <div class="sum-row"><span>Shipping</span><span>Free</span></div>
+          <div class="sum-row total"><span>Total</span><span id="bag-total">$0</span></div>
+          <button class="btn btn-primary btn-block" id="btn-checkout" style="margin-top:1rem;">Checkout</button>
+        </div>
+      </section>
+
+      <!-- ============ CHECKOUT ============ -->
+      <section class="screen" id="screen-checkout">
+        <div class="statusbar-space"></div>
+        <div class="sub-header">
+          <button class="back-btn" id="btn-checkout-back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <h2>Payment</h2>
+        </div>
+        <div class="checkout-wrap">
+          <div class="checkout-order">
+            <span>Order total</span>
+            <span id="checkout-total">$0</span>
+          </div>
+          <form class="checkout-form" id="checkout-form" onsubmit="return false">
+            <label>
+              Cardholder name
+              <input type="text" id="checkout-name" placeholder="Jane Doe" autocomplete="cc-name" />
+            </label>
+            <label>
+              Card number
+              <input type="text" id="checkout-card" placeholder="1234 5678 9012 3456" inputmode="numeric" autocomplete="cc-number" />
+            </label>
+            <label>
+              Expiry
+              <input type="text" id="checkout-expiry" placeholder="MM/YY" inputmode="numeric" autocomplete="cc-exp" />
+            </label>
+            <label>
+              CVV
+              <input type="text" id="checkout-cvv" placeholder="123" inputmode="numeric" autocomplete="cc-csc" />
+            </label>
+            <button class="btn btn-primary btn-block" type="button" id="btn-pay-now">Pay now</button>
+          </form>
+          <p class="checkout-note">This is a demo checkout — no real payment is processed.</p>
+        </div>
+      </section>
+
+      <!-- ============ SUCCESS ============ -->
+      <section class="screen" id="screen-success">
+        <div class="statusbar-space"></div>
+        <div class="success-wrap">
+          <div class="success-ring">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h2>Order placed</h2>
+          <p>Your pieces are being prepared. You'll get a note the moment they ship — usually within 24 hours.</p>
+          <button class="btn btn-primary" id="btn-continue-shopping" style="margin-top:1.8rem;">Continue shopping</button>
+        </div>
+      </section>
+
+      <!-- ============ PROFILE ============ -->
+      <section class="screen" id="screen-profile">
+        <div class="statusbar-space"></div>
+        <div class="profile-head">
+          <div class="profile-avatar">J</div>
+          <h2 style="font-size:var(--text-md);font-weight:600;">Joe</h2>
+          <div style="font-size:var(--text-xs);color:var(--ink-soft);">Melbourne, Australia</div>
+          <div class="profile-stats">
+            <div><b id="stat-saved">0</b><span>Saved</span></div>
+            <div><b id="stat-tryons">0</b><span>Try-ons</span></div>
+            <div><b>—</b><span>Orders</span></div>
+          </div>
+        </div>
+        <div class="profile-list">
+          <div class="profile-row"><div class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="15" rx="2"/><path d="M8 3v6M16 3v6M3 11h18"/></svg>Order history</div>›</div>
+          <div class="profile-row"><div class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.2"/><path d="M4 20c1.5-4.5 5-6 8-6s6.5 1.5 8 6"/></svg>Fit profile & measurements</div>›</div>
+          <div class="profile-row"><div class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Style preferences</div>›</div>
+          <div class="profile-row"><div class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4v5c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V7z"/></svg>Payment & shipping</div>›</div>
+          <div class="profile-row"><div class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2.5 2.5"/></svg>Notifications</div>›</div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ============ BOTTOM NAV ============ -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-nav="screen-home" data-key="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11.5L12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+        <span>Home</span>
+      </button>
+      <div class="nav-btn-wrap">
+        <button class="nav-btn" data-nav="screen-saved" data-key="saved">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.35-9.5-8.8C.5 8.5 2.3 5 6 5c2 0 3.5 1.2 4 2.4C10.5 6.2 12 5 14 5c3.7 0 5.5 3.5 3.5 7.2C19 16.65 12 21 12 21z"/></svg>
+          <span>Saved</span>
+        </button>
+        <span class="badge-dot hidden" id="badge-saved">0</span>
+      </div>
+      <button class="nav-camera" id="btn-nav-camera">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8a2 2 0 0 1 2-2h1.2a1 1 0 0 0 .83-.45l.94-1.4A1 1 0 0 1 9.8 3.5h4.4a1 1 0 0 1 .83.45l.94 1.4a1 1 0 0 0 .83.45H18a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.3"/></svg>
+      </button>
+      <div class="nav-btn-wrap">
+        <button class="nav-btn" data-nav="screen-bag" data-key="bag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          <span>Bag</span>
+        </button>
+        <span class="badge-dot hidden" id="badge-bag">0</span>
+      </div>
+      <button class="nav-btn" data-nav="screen-profile" data-key="profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c1.6-4.6 5.2-6.2 7.5-6.2s5.9 1.6 7.5 6.2"/></svg>
+        <span>Profile</span>
+      </button>
+    </nav>
+
+    <div class="toast" id="toast"></div>
+  </div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
